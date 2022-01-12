@@ -1,0 +1,21 @@
+{
+  "name": "pharmacy2u-technical-test",
+  "version": "1.0.0",
+  "description": "A TV schedule viewer",
+  "main": "./server.js",
+  "scripts": {
+    "run": "node ."
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7",
+    "browserify": "^17.0.0",
+    "through2": "^4.0.2"
+  }
+}
