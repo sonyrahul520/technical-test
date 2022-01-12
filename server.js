@@ -3,6 +3,8 @@ const Express = require("express");
 const Browserify = require("browserify");
 const Babel = require("@babel/core");
 const Through = require("through2");
+const Sass = require("sass");
+const Fs = require("fs");
 const App = Express();
 
 /** @returns {Promise<string>} */
@@ -54,13 +56,38 @@ function CompileApp() {
   });
 }
 
+/** @returns {Promise<string>} */
+function CompileSass() {
+  return new Promise((res, rej) => {
+    Fs.readFile("./styles/entry.scss", (err, data) => {
+      if (err) rej(err);
+      else res(Sass.compileString(data.toString()).css);
+    });
+  });
+}
+
 App.get("/_/bundle.js", async (req, res) => {
-  const data = await CompileApp();
-  res.header("Content-Type", "application/javascript").status(200).send(data);
+  try {
+    const data = await CompileApp();
+    res.header("Content-Type", "application/javascript").status(200).send(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send();
+  }
+});
+
+App.get("/_/bundle.css", async (req, res) => {
+  try {
+    const data = await CompileSass();
+    res.header("Content-Type", "text/css").status(200).send(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send();
+  }
 });
 
 App.get("*", (req, res) => {
-    res.header("Content-Type", "text/html").status(200).send(`<!DOCTYPE html>
+  res.header("Content-Type", "text/html").status(200).send(`<!DOCTYPE html>
 <html>
     <head>
     <title>Pharmacy2U Technical Test</title>
@@ -70,8 +97,8 @@ App.get("*", (req, res) => {
     <div id="react-container"></div>
     <script src="/_/bundle.js"></script>
     </body>
-</html>`)
-})
+</html>`);
+});
 
 App.listen(3000, () => {
   console.log(`App is listening at http://localhost:3000/`);
