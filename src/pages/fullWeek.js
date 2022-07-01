@@ -4,6 +4,9 @@ import Card from './CardDesign.js';
 import ModalNew from './modal.js';
 import Container from './container.js';
 
+const box = styled(card)
+
+
  export default function Fullshow  () {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -48,14 +51,17 @@ import Container from './container.js';
                             &&
 
                             <Card onClick={() => {
-                            setModalOpen(true); setPassData(value._embedded.show.id);
+                            
+                                setModalOpen(true); setPassData(value._embedded.show.id);
                             setTitleData(value.name); setSummary(value._embedded.show.summary)
-                            }}>
+                        }}>
+                            <box></box>
+                                <div>
                                 <b>Episode:{value.name} </b><br />
-
+                            
                                 series:{value._embedded.show.name} <br />
                                 date: {Moment(value.airdate).format("DD-MM-YYYY")}<br />
-                                
+                                </div>
                                 </Card>
                             
 

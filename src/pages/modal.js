@@ -46,9 +46,7 @@ export default function ModalNew(props) {
                     <Modalstyle>
 
                         <b> {props.titleData}</b> <br />
-                        {props.summary}
-                        
-                       
+                            {props.summary}
                             <Episodes />
                        
                     </Modalstyle>

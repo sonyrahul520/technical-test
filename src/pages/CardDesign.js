@@ -8,7 +8,9 @@ const Card = styled.div`
   width: 300px;
    height: 100px;
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
- 
+ display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
   border-radius: 20px;
   background-color: #eeeeee;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
