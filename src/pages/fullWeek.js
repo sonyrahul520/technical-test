@@ -4,7 +4,10 @@ import Card from './CardDesign.js';
 import ModalNew from './modal.js';
 import Container from './container.js';
 
-const box = styled(card)
+const box = styled(card)`box-shadow: 0px 0px 0px;
+height: 100px;
+width: 50px;`;
+
 
 
  export default function Fullshow  () {
