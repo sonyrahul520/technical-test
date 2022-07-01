@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Container from './container.js';
+import Episodes from './episodes.js';
 
 const Modalstyle = styled.div`
 position: fixed;
@@ -8,17 +10,17 @@ position: fixed;
   width: 700px;
    height: auto;
     border-radius: 10px;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top:0;
+    left:0;
+    transform: translate(-50%, -200px);
     padding: 10px;
     line-height: 1.5
     
 `;
 
 const Overlay = styled.div`
- width: 100vw;
-  height: 100vh;
+ width: auto;
+  height: auto;
   background-color: rgba(238,238,238,.3);
   position: absolute;
   top: 50%;
@@ -42,8 +44,13 @@ export default function ModalNew(props) {
 
                 <Overlay onClick={() => { props.setModalOpen(false) }}>
                     <Modalstyle>
-                       <b> {props.titleData}</b> <br/>
+
+                        <b> {props.titleData}</b> <br />
                         {props.summary}
+                        
+                       
+                            <Episodes />
+                       
                     </Modalstyle>
                    
                 </Overlay >

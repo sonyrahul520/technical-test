@@ -8,5 +8,5 @@ import Episodes from './episodes.js';
 /** @type {React.FC} */
 export const Home = ({}) => {
     return <div>
-        <Episodes id={7847} />    </div>;
+        <Fullshow  />    </div>;
 };

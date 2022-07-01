@@ -65,7 +65,7 @@ import Container from './container.js';
                 ))
                 }
                 </Container>
-                {passData}
+                
                 {isOpen &&
                     <ModalNew setModalOpen={setModalOpen} passData={passData} titleData={titleData} summary={summary} />}
             </>
